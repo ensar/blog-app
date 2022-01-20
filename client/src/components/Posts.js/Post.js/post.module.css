@@ -1,0 +1,39 @@
+.post {
+  width: 350px;
+  height: 450px;
+  border: 1px solid #222f3e;
+  border-radius: 10px;
+  box-shadow: 4px 4px 10px #000;
+  margin-top: 20px;
+  background-color: #fff;
+  position: relative;
+}
+.post img {
+  width: 350px;
+  height: 250px;
+  border-radius: 10px;
+  background-position: center;
+}
+.blogInfo {
+  display: flex;
+  flex-direction: column;
+  padding: 10px;
+}
+.blogInfo p {
+  color: rgb(63, 60, 60);
+}
+.blogInfo a {
+  display: flex;
+  align-items: center;
+  color: #000;
+}
+.blogInfo h1 {
+  margin-right: 10px;
+}
+.date {
+  position: absolute;
+  bottom: 10px;
+  padding-top: 10px;
+  width: calc(100% - 20px);
+  border-top: 1px solid #000;
+}
