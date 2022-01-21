@@ -2,6 +2,7 @@ import { useState } from "react";
 import { api } from "../../utils/api";
 import styles from "./modal.module.css";
 import { toast } from "react-toastify";
+import FileBase64 from "react-file-base64";
 import { useNavigate, useParams } from "react-router-dom";
 
 const Modal = ({ isOpen, setIsOpen, defaultTitle, defaultContent }) => {
@@ -14,12 +15,13 @@ const Modal = ({ isOpen, setIsOpen, defaultTitle, defaultContent }) => {
 
   const updatePost = async (e) => {
     e.preventDefault();
-    const data = new FormData();
-    data.append("title", title);
-    data.append("content", content);
-    data.append("postImage", image);
+
     try {
-      const response = await api().patch(`/posts/${params.id}`, data);
+      const response = await api().patch(`/posts/${params.id}`, {
+        title,
+        content,
+        image,
+      });
       setIsOpen(false);
       navigate("/posts");
     } catch (err) {
@@ -50,11 +52,7 @@ const Modal = ({ isOpen, setIsOpen, defaultTitle, defaultContent }) => {
           />
         </div>
         <div className={styles.formItem}>
-          <input
-            type="file"
-            name="postImage"
-            onChange={(e) => setImage(e.target.files[0])}
-          />
+          <FileBase64 onDone={({ base64 }) => setImage(base64)} />
         </div>
         <button type="submit">Update</button>
       </form>

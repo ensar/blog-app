@@ -13,7 +13,6 @@ const getPosts = (req, res) => {
 };
 
 const createPost = (req, res) => {
-  req.body.image = req.file.originalname;
   req.body.user = req.user.id;
   const post = new Post(req.body);
   return post
@@ -32,7 +31,6 @@ const findPost = (req, res) => {
 };
 
 const updatePost = (req, res) => {
-  req.body.image = req.file?.originalname;
   return Post.findOneAndUpdate({ _id: req.params.id }, req.body, { new: true })
     .then((response) => res.status(200).send(response))
     .catch((err) => res.status(500).send({ error: err.message }));

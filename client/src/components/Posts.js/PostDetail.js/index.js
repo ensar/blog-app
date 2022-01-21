@@ -55,10 +55,7 @@ const PostDetail = () => {
         {loading && <div>Post Loading...</div>}
         {postData && (
           <>
-            <img
-              alt="postImage"
-              src={`${process.env.PUBLIC_URL}/uploads/${postData.image}`}
-            ></img>
+            <img alt="postImage" src={postData.image}></img>
             <div className={styles.content}>
               <div className={styles.postHeader}>
                 <h1>{postData.title}</h1>
